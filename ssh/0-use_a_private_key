@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Server IP address or hostname
+SERVER="8.8.8.8"
+
+# Private key path
+KEY_PATH="$HOME/.ssh/school"
+
+# User to connect as
+USER="ubuntu"
+
+# Use ssh with single-character flags: -i for identity file, -u for user
+ssh -i "$KEY_PATH" "$USER@$SERVER"
+
+
