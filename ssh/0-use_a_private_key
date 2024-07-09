@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/bash
+
+#Defines IP adrress
 
 # Server IP address or hostname
 SERVER="8.8.8.8"
@@ -11,5 +13,4 @@ USER="ubuntu"
 
 # Use ssh with single-character flags: -i for identity file, -u for user
 ssh -i "$KEY_PATH" "$USER@$SERVER"
-
 
