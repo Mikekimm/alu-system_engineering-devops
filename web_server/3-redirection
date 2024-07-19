@@ -1,28 +1,21 @@
 #!/usr/bin/env bash
-# Install Nginx
+# add a 301 redirection
 sudo apt update -y
 sudo apt install nginx -y
 
-# Configure Nginx for redirection
-sudo bash -c "cat <<EOF > /etc/nginx/sites-available/default
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+sudo mkdir /etc/nginx/html
+sudo touch /etc/nginx/html/index.html
+echo "Holberton School" > /etc/nginx/html/index.html
+printf %s "server {
+     listen	 80 default_server;
+     listen	 [::]:80 default_server;
+     root	 /etc/nginx/html;
+     index	 index.html index.htm;
 
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-
-    server_name _;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
+     location /redirect_me {
+	return 301 https://www.youtube.com/watch?v=QH2-TGU1wu4;
+     }
 }
-EOF"
+" > /etc/nginx/sites-available/default
 
-# Restart Nginx to apply changes
 sudo service nginx restart
